@@ -15,14 +15,3 @@ print("Original List:", numbers)
 # Method 1: Using set (does not preserve order)
 unique_set = list(set(numbers))
 print("Using set (order not preserved):", unique_set)
-
-# Method 2: Preserving order using loop
-unique_ordered = []
-for num in numbers:
-    if num not in unique_ordered:
-        unique_ordered.append(num)
-print("Preserving order:", unique_ordered)
-
-# Method 3: Using dict.fromkeys() (preserves order in Python 3.7+)
-unique_dict = list(dict.fromkeys(numbers))
-print("Using dict.fromkeys():", unique_dict)
