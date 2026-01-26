@@ -123,58 +123,48 @@ for pwd in test_passwords:
 print("\n" + "=" * 80)
 print("BONUS: Enhanced Password Checker with Special Characters")
 print("=" * 80)
-
-def check_password_strength(pwd):
-    """
-    Check password strength with additional criteria
-    Returns: (is_valid, strength_level, missing_requirements)
-    """
-    # Basic requirements
-    length_ok = len(pwd) >= 8
-    has_upper = any(c.isupper() for c in pwd)
-    has_lower = any(c.islower() for c in pwd)
-    has_digit = any(c.isdigit() for c in pwd)
-    
-    # Additional checks
-    has_special = any(c in "!@#$%^&*()_+-=[]{}|;:,.<>?" for c in pwd)
-    is_long = len(pwd) >= 12
-    
-    # Determine validity
-    is_valid = length_ok and has_upper and has_lower and has_digit
-    
-    # Calculate strength
-    strength_score = sum([length_ok, has_upper, has_lower, has_digit, has_special, is_long])
-    
-    if strength_score >= 5:
-        strength = "Strong"
-    elif strength_score >= 4:
-        strength = "Medium"
-    else:
-        strength = "Weak"
-    
-    # Missing requirements
-    missing = []
-    if not length_ok:
-        missing.append("Minimum 8 characters")
-    if not has_upper:
-        missing.append("Uppercase letter")
-    if not has_lower:
-        missing.append("Lowercase letter")
-    if not has_digit:
-        missing.append("Digit")
-    
-    return is_valid, strength, missing
-
-# Test enhanced checker
 print("\nEnhanced password strength analysis:")
 
+# Inline enhanced password strength analysis (no functions used)
 test_pwd = input("\nEnter password for strength analysis: ")
-valid, strength, missing = check_password_strength(test_pwd)
 
+# Basic requirements
+length_ok = len(test_pwd) >= 8
+has_upper = any(c.isupper() for c in test_pwd)
+has_lower = any(c.islower() for c in test_pwd)
+has_digit = any(c.isdigit() for c in test_pwd)
+
+# Additional checks
+has_special = any(c in "!@#$%^&*()_+-=[]{}|;:,.<>?" for c in test_pwd)
+is_long = len(test_pwd) >= 12
+
+# Determine validity
+is_valid = length_ok and has_upper and has_lower and has_digit
+
+# Calculate strength
+strength_score = sum([length_ok, has_upper, has_lower, has_digit, has_special, is_long])
+if strength_score >= 5:
+    strength = "Strong"
+elif strength_score >= 4:
+    strength = "Medium"
+else:
+    strength = "Weak"
+
+# Missing requirements
+missing = []
+if not length_ok:
+    missing.append("Minimum 8 characters")
+if not has_upper:
+    missing.append("Uppercase letter")
+if not has_lower:
+    missing.append("Lowercase letter")
+if not has_digit:
+    missing.append("Digit")
+
+# Output results
 print(f"\nPassword: {test_pwd}")
-print(f"Valid: {valid}")
+print(f"Valid: {is_valid}")
 print(f"Strength: {strength}")
-
 if missing:
     print(f"Missing: {', '.join(missing)}")
 else:
